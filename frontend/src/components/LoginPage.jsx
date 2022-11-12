@@ -5,7 +5,6 @@ import { Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import { useTranslation } from 'react-i18next';
-import { toast } from 'react-toastify';
 
 import { useAuth } from '../hooks/index.jsx';
 import routes from '../routes.js';
@@ -47,17 +46,17 @@ const LoginPage = () => {
           const { data } = response;
           auth.logIn(data);
           navigate('/');
-        } catch (err) {
-          console.log(err);
-          if (err.isAxiosError) {
-            if (err.response.status === 401) {
+        } catch (error) {
+          console.log(error);
+          if (error.isAxiosError) {
+            if (error.response.status === 401) {
               setError(true);
               inputEl.current.select();
             } else {
-              toast.error(t('errors.network'));
+              (t('errors.network'));
             }
           } else {
-            toast.error(t('errors.unknown'));
+            (t('errors.unknown'));
             throw err;
           }
         }
