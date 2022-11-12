@@ -7,6 +7,7 @@ import {
   Outlet,
 } from 'react-router-dom';
 
+import Header from './Header.jsx';
 import LoginPage from './LoginPage.jsx';
 import PageNotFound from './PageNotFound.jsx';
 
@@ -26,6 +27,7 @@ const App = () => (
   <AuthProvider>
     <BrowserRouter>
       <div className="d-flex flex-column h-100">
+        <Header />
         <Routes>
           <Route path="/login" element={<PrivateOutlet />}>
             <Route path="" element={<LoginPage />} />
