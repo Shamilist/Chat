@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import { useTranslation } from 'react-i18next';
 
-import { useAuth } from '../hooks/index.jsx';
+import { useAuth } from '../hooks/index.js';
 import routes from '../routes.js';
 import image from '../assets/avatar.jpg';
 
