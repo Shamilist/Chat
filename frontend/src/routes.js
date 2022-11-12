@@ -1,7 +1,7 @@
+const apiPath = '/api/v1';
+
 const routes = {
-  loginPath: () => 'api/v1/login',
-  homePage: () => '/',
-  pageNotFound: () => '*',
+  loginPath: () => [apiPath, 'login'].join('/'),
 };
 
 export default routes;
