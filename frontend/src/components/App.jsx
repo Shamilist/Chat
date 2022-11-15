@@ -14,10 +14,10 @@ import PageNotFound from './PageNotFound.jsx';
 import AuthProvider from '../contexts/AuthProvider.jsx';
 import { useAuth } from '../hooks/index.js';
 
-const PrivateOutlet = ({ toMainPage } = false) => {
+const PrivateOutlet = ({ toHomePage } = false) => {
   const auth = useAuth();
 
-  if (toMainPage) {
+  if (toHomePage) {
     return auth.user ? <Outlet /> : <Navigate to="/login" />;
   }
   return auth.user ? <Navigate to="/" /> : <Outlet />;
