@@ -11,8 +11,8 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { PlusSquare } from 'react-bootstrap-icons';
-import { getAllChannels, getCurrentChannelId, getCurrentChannelId } from '../slices/selectors.js';
-import { actions as channelsActions } from '../slices/channelsSlice.js';
+import { getAllChannels, getCurrentChannelId } from '../slices/selectors.js';
+import { actions as channelsActions } from '../slices/channels.js';
 
 const Channels = () => {
 const dispatch = useDispatch();
