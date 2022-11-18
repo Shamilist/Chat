@@ -30,7 +30,7 @@ const App = () => (
       <div className="d-flex flex-column h-100">
         <Header />
         <Routes>
-          <Route path="/" element={<PrivateOutlet toMainPage />}>
+          <Route path="/" element={<PrivateOutlet toHomePage />}>
             <Route path="" element={<HomePage />} />
           </Route>
           <Route path="/login" element={<PrivateOutlet />}>

@@ -2,6 +2,8 @@
 
 const ru = {
   translation: {
+    loading: 'Загрузка...',
+    logout: 'Выйти',
     login: {
       required: 'Обязательное поле',
       username: 'Ваш ник',
@@ -21,6 +23,23 @@ const ru = {
     errors: {
       network: 'Ошибка соединения',
       unknown: 'Неизвестная ошибка',
+    },
+    channels: {
+      main: 'Каналы',
+      manage: 'Управление каналом',
+      remove: 'Удалить',
+      rename: 'Переименовать',
+    },
+    messages: {
+      counter: {
+        key_zero: '{{count}} сообщений',
+        key_one: '{{count}} сообщение',
+        key_few: '{{count}} сообщения',
+        key_many: '{{count}} сообщений',
+      },
+      new: 'Новое сообщение',
+      input: 'Введите сообщение...',
+      send: 'Отправить',
     },
   },
 };
