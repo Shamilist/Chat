@@ -12,3 +12,6 @@ export const getCurrentChannel = (state) => {
 export const isDataFetching = (state) => state.channels.fetching;
 
 export const getAllMessages = (state) => messagesSelectors.selectAll(state);
+
+export const getModalType = (state) => state.modals.modalType;
+export const getItemId = (state) => state.modals.itemId;
