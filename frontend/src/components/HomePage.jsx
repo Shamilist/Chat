@@ -5,17 +5,27 @@ import { useTranslation } from 'react-i18next';
 
 import Channels from './Channels.jsx';
 import Messages from './Messages.jsx';
-import { isDataFetching } from '../slices/selectors.js';
+import { isDataFetching, getModalType } from '../slices/selectors.js';
 import { fetchData } from '../slices/channels.js';
+import getModal from './modals/index.js';
 
 const HomePage = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const spinner = useSelector(isDataFetching);
+  const modal = useSelector(getModalType);
 
   useEffect(() => {
     dispatch(fetchData());
   }, [dispatch]);
+
+  const modalRender = (type) => {
+    if (!type) {
+      return null;
+    }
+    const Modal = getModal(type);
+    return <Modal />;
+  };
 
   const result = () => (spinner ? (
     <div className="h-100 d-flex justify-content-center align-items-center">
@@ -29,6 +39,7 @@ const HomePage = () => {
         <Channels />
         <Messages />
       </Row>
+      {modalRender(modal)}
     </Container>
   ));
 
