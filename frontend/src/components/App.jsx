@@ -11,6 +11,7 @@ import Header from './Header.jsx';
 import LoginPage from './LoginPage.jsx';
 import PageNotFound from './PageNotFound.jsx';
 import HomePage from './HomePage.jsx';
+import SignupPage from './SignupPage.jsx';
 
 import AuthProvider from '../contexts/AuthProvider.jsx';
 import { useAuth } from '../hooks/index.js';
@@ -35,6 +36,9 @@ const App = () => (
           </Route>
           <Route path="/login" element={<PrivateOutlet />}>
             <Route path="" element={<LoginPage />} />
+          </Route>
+          <Route path="/signup" element={<PrivateOutlet />}>
+            <Route path="" element={<SignupPage />} />
           </Route>
           <Route path="*" element={<PageNotFound />} />
         </Routes>
