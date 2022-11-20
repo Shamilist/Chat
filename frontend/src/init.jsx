@@ -7,7 +7,7 @@ import App from './components/App.jsx';
 import resources from './locales/index.js';
 import store from './slices/index.js';
 import ApiProvider from './contexts/ApiProvider.jsx';
-import createAPI from './context/createAPI.js';
+import createAPI from './context/api.js';
 
 const init = async (socket) => {
   const api = createAPI(socket);
