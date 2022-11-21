@@ -1,13 +1,13 @@
 /* eslint-disable no-param-reassign */
 
-import { createEntityAdapter } from '@reduxjs/toolkit';
+import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
 
 import { actions as channelsActions, fetchData } from './channels.js';
 
 const messagesAdapter = createEntityAdapter();
 const initialState = messagesAdapter.getInitialState();
 
-const messagesSlice = ({
+const messagesSlice = createSlice({
   name: 'messages',
   initialState,
   reducers: {
