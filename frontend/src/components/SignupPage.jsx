@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Button, Form } from 'react-bootstrap';
 import * as yup from 'yup';
+import { toast } from 'react-toastify';
 import routes from '../routes.js';
 import { useAuth } from '../hooks/index.js';
 import image from '../assets/avatar_1.jpg';
@@ -60,10 +61,10 @@ const SignupPage = () => {
             setFailed(true);
             inputEl.current.select();
           } else {
-            console.log(t('errors.network'));
+            toast.error(t('errors.network'));
           }
         } else {
-          console.log(t('errors.unknown'));
+          toast.error(t('errors.unknown'));
           throw err;
         }
       }

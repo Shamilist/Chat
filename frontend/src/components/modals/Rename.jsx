@@ -4,6 +4,7 @@ import { Modal, Form, Button } from 'react-bootstrap';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 import { useChat } from '../../hooks/index.js';
 import { getItemId, getAllChannels } from '../../slices/selectors.js';
 import { actions as modalsActions } from '../../slices/modals.js';
@@ -37,6 +38,7 @@ const Rename = () => {
     },
     validationSchema,
     onSubmit: (values) => {
+      toast.success(t('modalRename.success'));
       chat.renameChannel({ id: itemId, name: values.name });
       dispatch(modalsActions.hideModal());
     },

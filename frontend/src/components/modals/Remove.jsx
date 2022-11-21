@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Modal, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 import { useChat } from '../../hooks/index.js';
 import { getItemId } from '../../slices/selectors.js';
 import { actions as modalsActions } from '../../slices/modals.js';
@@ -13,6 +14,7 @@ const Remove = () => {
   const itemId = useSelector(getItemId);
 
   const handleRemove = (id) => {
+    toast.success(t('modalRemove.success'));
     chat.removeChannel(id);
     dispatch(modalsActions.hideModal());
   };

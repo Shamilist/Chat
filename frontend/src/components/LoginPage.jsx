@@ -5,7 +5,7 @@ import { Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import { useTranslation } from 'react-i18next';
-
+import { toast } from 'react-toastify';
 import { useAuth } from '../hooks/index.js';
 import routes from '../routes.js';
 import image from '../assets/avatar.jpg';
@@ -53,10 +53,10 @@ const LoginPage = () => {
               setError(true);
               inputEl.current.select();
             } else {
-              (t('errors.network'));
+              toast.error(t('errors.network'));
             }
           } else {
-            (t('errors.unknown'));
+            toast.error(t('errors.unknown'));
             throw err;
           }
         }
