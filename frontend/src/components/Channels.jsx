@@ -13,6 +13,7 @@ import { useTranslation } from 'react-i18next';
 import { PlusSquare } from 'react-bootstrap-icons';
 import { getAllChannels, getCurrentChannelId } from '../slices/selectors.js';
 import { actions as channelsActions } from '../slices/channels.js';
+import { actions as modalsActions } from '../slices/modals.js';
 
 const Channels = () => {
   const dispatch = useDispatch();
