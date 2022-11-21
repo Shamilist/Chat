@@ -9,7 +9,7 @@ export const getCurrentChannel = (state) => {
   const currentChanelId = getCurrentChannelId(state);
   return channelsSelectors.selectById(state, currentChanelId);
 };
-export const isDataFetching = (state) => state.channels.fetching;
+export const isDataFetching = (state) => state.channels.isFetching;
 
 export const getAllMessages = (state) => messagesSelectors.selectAll(state);
 
