@@ -22,7 +22,7 @@ const fetchData = createAsyncThunk(
 
 const channelsAdapter = createEntityAdapter();
 const initialState = channelsAdapter.getInitialState({
-  currentChanelId: 1,
+  currentChannelId: 1,
   isFetching: false,
   error: null,
 });
@@ -32,16 +32,16 @@ const channelsSlice = createSlice({
   initialState,
 
   reducers: {
-    addChanel: channelsAdapter.addOne,
-    removeChanel: ((state, action) => {
+    addChannel: channelsAdapter.addOne,
+    removeChannel: ((state, action) => {
       channelsAdapter.removeOne(state, action.payload.id);
-      if (action.payload.id === state.currentChanelId) {
-        state.currentChanelId = action.payload;
+      if (action.payload.id === state.currentChannelId) {
+        state.currentChannelId = action.payload;
       }
     }),
-    changeChanelName: channelsAdapter.updateOne,
-    setCurrentChanelId: ((state, action) => {
-      state.currentChanelId = action.payload;
+    changeChannelName: channelsAdapter.updateOne,
+    setCurrentChannelId: ((state, action) => {
+      state.currentChannelId = action.payload;
     }),
   },
 
@@ -54,7 +54,7 @@ const channelsSlice = createSlice({
       .addCase(fetchData.fulfilled, (state, action) => {
         const { channels, currentChannelId } = action.payload;
         channelsAdapter.setAll(state, channels);
-        state.currentChanelId = currentChannelId;
+        state.currentChannelId = currentChannelId;
         state.isFetching = false;
         state.error = null;
       })
