@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { Form, InputGroup, Button } from 'react-bootstrap';
 import { ArrowRightSquare } from 'react-bootstrap-icons';
+import leoProfanity from 'leo-profanity';
 import { useAuth, useChat } from '../hooks/index.js';
 import { getCurrentChannelId, getCurrentChannel, getAllMessages } from '../slices/selectors.js';
 import Message from './Message.jsx';
@@ -46,10 +47,11 @@ const Messages = () => {
       validationSchema,
       onSubmit: (values) => {
         const { body } = values;
+        const filteredBody = leoProfanity.clean(body);
         const channelId = currentChannelId;
         const { username } = auth.user;
         const data = {
-          body,
+          body: filteredBody,
           channelId,
           username,
         };

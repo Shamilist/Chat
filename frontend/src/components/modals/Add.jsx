@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Modal, Form, Button } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
+import leoProfanity from 'leo-profanity';
 import { useChat } from '../../hooks/index.js';
 import { getAllChannels } from '../../slices/selectors.js';
 import { actions as modalsActions } from '../../slices/modals.js';
@@ -37,7 +38,8 @@ const Add = () => {
     validationSchema,
     onSubmit: (values) => {
       toast.success(t('modalAdd.success'));
-      chat.addNewChannel({ name: values.name });
+      const filteredName = leoProfanity.clean(values.name);
+      chat.addNewChannel({ name: filteredName });
       dispatch(modalsActions.hideModal());
     },
   });
