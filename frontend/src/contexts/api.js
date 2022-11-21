@@ -1,5 +1,5 @@
 import { actions as messagesActions } from '../slices/messages.js';
-import { actions as channelsActions } from '../slices/channelsSlice.js';
+import { actions as channelsActions } from '../slices/channels.js';
 
 import store from '../slices/index.js';
 
