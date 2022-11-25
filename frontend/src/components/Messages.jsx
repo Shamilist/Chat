@@ -61,11 +61,11 @@ const Messages = () => {
     },
   );
 
-  const renderMessages = () => {
+  const renderMessages = () => (
     currentMessages.map((message) => (
       <Message key={message.id} content={message} />
-    ));
-  };
+    ))
+  );
 
   return (
     <div className="col p-0 h-100">

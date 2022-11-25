@@ -4,7 +4,7 @@ import { selectors as channelsSelectors } from './channels.js';
 import { selectors as messagesSelectors } from './messages.js';
 
 export const getAllChannels = (state) => channelsSelectors.selectAll(state);
-export const getCurrentChannelId = (state) => state.channels.сurrentChannelId;
+export const getCurrentChannelId = (state) => state.channels.currentChannelId;
 export const getCurrentChannel = (state) => {
   const currentChannelId = getCurrentChannelId(state);
   return channelsSelectors.selectById(state, currentChannelId);
