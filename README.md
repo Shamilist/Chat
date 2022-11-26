@@ -3,7 +3,7 @@
 
 
 
-### Welcome to the real-time chat. Сlick [here](https://mychat.up.railway.app/) to get started.
+### Welcome to the real-time chat ![](https://github.com/blackcater/blackcater/raw/main/images/Hi.gif). Сlick [here](https://mychat.up.railway.app/) to get started.
 
 
 
