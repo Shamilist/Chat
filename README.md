@@ -3,3 +3,9 @@
 
 Welcome to the real-time chat.   
 Сlick [here](https://mychat.up.railway.app/) to get started.
+
+Installtion guide:  
+
+$ git clone https://github.com/Shamilist/frontend-project-12     
+$ cd frontend-project-12    
+$ make install
