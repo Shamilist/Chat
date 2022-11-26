@@ -15,4 +15,4 @@ $ make install
 ### Launch and demo:
 
 $ make start   
-# open http://localhost:3000
+open http://localhost:3000
