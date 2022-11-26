@@ -3,8 +3,7 @@
 
 
 
-### Welcome to the real-time chat.   
-### Сlick [here](https://mychat.up.railway.app/) to get started.
+### Welcome to the real-time chat. Сlick [here](https://mychat.up.railway.app/) to get started.
 
 
 
