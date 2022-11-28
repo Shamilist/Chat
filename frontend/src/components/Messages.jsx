@@ -94,6 +94,7 @@ const Messages = () => {
                 value={formik.values.body}
                 ref={inputEl}
                 disabled={formik.isSubmitting}
+                autocomplete="off"
               />
               <Button
                 className="btn-group-vertical"
