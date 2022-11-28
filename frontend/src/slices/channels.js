@@ -3,14 +3,7 @@
 import axios from 'axios';
 import { createAsyncThunk, createSlice, createEntityAdapter } from '@reduxjs/toolkit';
 import routes from '../routes.js';
-
-const getAuthHeader = () => {
-  const currentUser = JSON.parse(localStorage.getItem('user'));
-  if (currentUser && currentUser.token) {
-    return { Authorization: `Bearer ${currentUser.token}` };
-  }
-  return {};
-};
+import { getAuthHeader } from '../contexts/AuthProvider.jsx';
 
 const fetchData = createAsyncThunk(
   'fetchData',

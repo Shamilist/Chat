@@ -4,8 +4,16 @@ import React, { useState } from 'react';
 
 import { AuthContext } from './index.js';
 
+const currentUser = JSON.parse(localStorage.getItem('user'));
+
+export const getAuthHeader = () => {
+  if (currentUser && currentUser.token) {
+    return { Authorization: `Bearer ${currentUser.token}` };
+  }
+  return {};
+};
+
 const AuthProvider = ({ children }) => {
-  const currentUser = JSON.parse(localStorage.getItem('user'));
   const [user, setUser] = useState(currentUser ? { username: currentUser.username } : null);
 
   const logIn = (userData) => {
@@ -18,19 +26,14 @@ const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
-  const getAuthHeader = () => {
-    if (currentUser && currentUser.token) {
-      return { Authorization: `Bearer ${currentUser.token}` };
-    }
-    return {};
-  };
+  const authHeader = getAuthHeader();
 
   return (
     <AuthContext.Provider value={{
       user,
       logIn,
       logOut,
-      getAuthHeader,
+      authHeader,
     }}
     >
       {children}
