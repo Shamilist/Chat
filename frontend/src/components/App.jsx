@@ -15,6 +15,7 @@ import SignupPage from './SignupPage.jsx';
 
 import AuthProvider from '../contexts/AuthProvider.jsx';
 import { useAuth } from '../hooks/index.js';
+import routes from '../routes';
 
 const PrivateOutlet = ({ toHomePage } = false) => {
   const auth = useAuth();
@@ -31,16 +32,16 @@ const App = () => (
       <div className="d-flex flex-column h-100">
         <Header />
         <Routes>
-          <Route path="/" element={<PrivateOutlet toHomePage />}>
+          <Route path={routes.homePage()} element={<PrivateOutlet toHomePage />}>
             <Route path="" element={<HomePage />} />
           </Route>
-          <Route path="/login" element={<PrivateOutlet />}>
+          <Route path={routes.loginPage()} element={<PrivateOutlet />}>
             <Route path="" element={<LoginPage />} />
           </Route>
-          <Route path="/signup" element={<PrivateOutlet />}>
+          <Route path={routes.signupPage()} element={<PrivateOutlet />}>
             <Route path="" element={<SignupPage />} />
           </Route>
-          <Route path="*" element={<PageNotFound />} />
+          <Route path={routes.pageNotFound()} element={<PageNotFound />} />
         </Routes>
       </div>
       <ToastContainer />
