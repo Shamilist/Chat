@@ -10,7 +10,7 @@ const fetchData = createAsyncThunk(
   async () => {
     try {
       const response = await axios.get(routes.dataPath(), { headers: getAuthHeader() });
-      return response;
+      return response.data;
     } catch (error) {
       throw new Error('Channels fetch error');
     }
