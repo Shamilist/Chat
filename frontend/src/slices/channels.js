@@ -8,8 +8,12 @@ import getAuthHeader from '../utils.js';
 const fetchData = createAsyncThunk(
   'fetchData',
   async () => {
-    const response = await axios.get(routes.dataPath(), { headers: getAuthHeader() });
-    return response.data;
+    try {
+      const response = await axios.get(routes.dataPath(), { headers: getAuthHeader() });
+      return response;
+    } catch (error) {
+      throw new Error('Channels fetch error');
+    }
   },
 );
 
