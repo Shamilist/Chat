@@ -10,7 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import Header from './Header.jsx';
 import LoginPage from './LoginPage.jsx';
 import PageNotFound from './PageNotFound.jsx';
-import HomePage from './HomePage.jsx';
+import HomePageLoader from './HomePageLoader.jsx';
 import SignupPage from './SignupPage.jsx';
 
 import AuthProvider from '../contexts/AuthProvider.jsx';
@@ -33,7 +33,7 @@ const App = () => (
         <Header />
         <Routes>
           <Route path={routes.homePage()} element={<PrivateOutlet toHomePage />}>
-            <Route path="" element={<HomePage />} />
+            <Route path="" element={<HomePageLoader />} />
           </Route>
           <Route path={routes.loginPage()} element={<PrivateOutlet />}>
             <Route path="" element={<LoginPage />} />

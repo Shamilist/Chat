@@ -8,12 +8,8 @@ import getAuthHeader from '../utils.js';
 const fetchData = createAsyncThunk(
   'fetchData',
   async () => {
-    try {
-      const response = await axios.get(routes.dataPath(), { headers: getAuthHeader() });
-      return response.data;
-    } catch (error) {
-      throw new Error('Channels fetch error');
-    }
+    const response = await axios.get(routes.dataPath(), { headers: getAuthHeader() });
+    return response.data;
   },
 );
 
@@ -63,6 +59,7 @@ const channelsSlice = createSlice({
 });
 
 export const { actions } = channelsSlice;
+export const { cleanError } = channelsSlice.actions;
 export default channelsSlice.reducer;
 export const selectors = channelsAdapter.getSelectors((state) => state.channels);
 export { fetchData };
