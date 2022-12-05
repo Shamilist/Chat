@@ -3,11 +3,12 @@
 import axios from 'axios';
 import { createAsyncThunk, createSlice, createEntityAdapter } from '@reduxjs/toolkit';
 import routes from '../routes.js';
-import getAuthHeader from '../utils.js';
+import { useAuth } from '../hooks/index.js';
 
 const fetchData = createAsyncThunk(
   'fetchData',
   async () => {
+    const { getAuthHeader } = useAuth();
     const response = await axios.get(routes.dataPath(), { headers: getAuthHeader() });
     return response.data;
   },
