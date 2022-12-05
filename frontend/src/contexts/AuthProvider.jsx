@@ -5,8 +5,8 @@ import React, { useState } from 'react';
 import { AuthContext } from './index.js';
 
 const AuthProvider = ({ children }) => {
-  const currentUser1 = JSON.parse(localStorage.getItem('user'));
-  const [user, setUser] = useState(currentUser1 ? { username: currentUser1.username } : null);
+  const currentUser = JSON.parse(localStorage.getItem('user'));
+  const [user, setUser] = useState(currentUser ? { username: currentUser.username } : null);
 
   const logIn = (userData) => {
     localStorage.setItem('user', JSON.stringify(userData));
@@ -19,7 +19,6 @@ const AuthProvider = ({ children }) => {
   };
 
   const getAuthHeader = () => {
-    const currentUser = JSON.parse(localStorage.getItem('user'));
     if (currentUser && currentUser.token) {
       return { Authorization: `Bearer ${currentUser.token}` };
     }

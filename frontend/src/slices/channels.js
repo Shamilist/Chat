@@ -3,12 +3,20 @@
 import axios from 'axios';
 import { createAsyncThunk, createSlice, createEntityAdapter } from '@reduxjs/toolkit';
 import routes from '../routes.js';
-import { useAuth } from '../hooks/index.js';
+// import { useAuth } from '../hooks/index.js';
+
+const getAuthHeader = () => {
+  const currentUser = JSON.parse(localStorage.getItem('user'));
+  if (currentUser && currentUser.token) {
+    return { Authorization: `Bearer ${currentUser.token}` };
+  }
+  return {};
+};
 
 const fetchData = createAsyncThunk(
   'fetchData',
   async () => {
-    const { getAuthHeader } = useAuth();
+    // const { getAuthHeader } = useAuth();
     const response = await axios.get(routes.dataPath(), { headers: getAuthHeader() });
     return response.data;
   },
