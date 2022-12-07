@@ -23,6 +23,7 @@ const ru = {
     errors: {
       network: 'Ошибка соединения',
       unknown: 'Неизвестная ошибка',
+      token: 'Ошибка токена',
     },
     channels: {
       main: 'Каналы',

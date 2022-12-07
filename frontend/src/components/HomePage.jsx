@@ -5,9 +5,11 @@ import { useTranslation } from 'react-i18next';
 
 import Channels from './Channels.jsx';
 import Messages from './Messages.jsx';
-import { isDataFetching, getModalType } from '../slices/selectors.js';
+import { isDataFetching, getModalType, getChannelsFetchingError } from '../slices/selectors.js';
 import { fetchData } from '../slices/channels.js';
 import getModal from './modals/index.js';
+import { useAuth } from '../hooks/index.js';
+import { toast } from 'react-toastify';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -15,9 +17,19 @@ const HomePage = () => {
   const spinner = useSelector(isDataFetching);
   const modal = useSelector(getModalType);
 
+  const errorState = useSelector(getChannelsFetchingError);
+  const { logOut } = useAuth();
+
   useEffect(() => {
     dispatch(fetchData());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (errorState !== null && errorState.name === 'TokenExpiredError') {
+      toast.error(t('errors.token'));
+      logOut();
+    }
+  }, [errorState, logOut, t]);
 
   const modalRender = (type) => {
     if (!type) {
