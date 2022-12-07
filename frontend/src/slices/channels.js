@@ -54,6 +54,7 @@ const channelsSlice = createSlice({
       })
       .addCase(fetchData.rejected, (state, action) => {
         state.isFetching = false;
+        console.log('errors', action.error);
         state.error = action.error;
       });
   },
