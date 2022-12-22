@@ -4,10 +4,12 @@ import { Container, Row, Spinner } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
 import { toast } from 'react-toastify';
+import axios from 'axios';
+import routes from '../routes.js';
 import Channels from './Channels.jsx';
 import Messages from './Messages.jsx';
 import { isDataFetching, getModalType, getChannelsFetchingError } from '../slices/selectors.js';
-import { fetchData } from '../slices/channels.js';
+// import { fetchData } from '../slices/channels.js';
 import getModal from './modals/index.js';
 import { useAuth } from '../hooks/index.js';
 
@@ -18,11 +20,15 @@ const HomePage = () => {
   const modal = useSelector(getModalType);
 
   const errorState = useSelector(getChannelsFetchingError);
-  const { logOut } = useAuth();
+  const { logOut, getAuthHeader } = useAuth();
 
   useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get(routes.dataPath(), { headers: getAuthHeader() });
+      return response.data;
+    };
     dispatch(fetchData());
-  }, [dispatch]);
+  }, [dispatch, getAuthHeader]);
 
   useEffect(() => {
     if (errorState !== null && errorState.name === 'TokenExpiredError') {
