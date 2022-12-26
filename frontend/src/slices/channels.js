@@ -1,24 +1,10 @@
 /* eslint-disable no-param-reassign */
 
-import axios from 'axios';
-import { createAsyncThunk, createSlice, createEntityAdapter } from '@reduxjs/toolkit';
-import routes from '../routes.js';
-import { useAuth } from '../hooks/index.js';
-
-const fetchData = createAsyncThunk(
-  'fetchData',
-  async () => {
-    const { getAuthHeader } = useAuth();
-    const response = await axios.get(routes.dataPath(), { headers: getAuthHeader() });
-    return response.data;
-  },
-);
+import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
 
 const channelsAdapter = createEntityAdapter();
 const initialState = channelsAdapter.getInitialState({
   currentChannelId: 1,
-  isFetching: false,
-  error: null,
 });
 
 const channelsSlice = createSlice({
@@ -27,6 +13,7 @@ const channelsSlice = createSlice({
 
   reducers: {
     addChannel: channelsAdapter.addOne,
+    addChannels: channelsAdapter.setAll,
     removeChannel: ((state, action) => {
       channelsAdapter.removeOne(state, action.payload.id);
       if (action.payload.id === state.currentChannelId) {
@@ -38,30 +25,8 @@ const channelsSlice = createSlice({
       state.currentChannelId = action.payload;
     }),
   },
-
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchData.pending, (state) => {
-        state.isFetching = true;
-        state.error = null;
-      })
-      .addCase(fetchData.fulfilled, (state, action) => {
-        const { channels, currentChannelId } = action.payload;
-        channelsAdapter.setAll(state, channels);
-        state.currentChannelId = currentChannelId;
-        state.isFetching = false;
-        state.error = null;
-      })
-      .addCase(fetchData.rejected, (state, action) => {
-        state.isFetching = false;
-        console.log('errors', action.error);
-        state.error = action.error;
-      });
-  },
 });
 
 export const { actions } = channelsSlice;
-export const { cleanError } = channelsSlice.actions;
 export default channelsSlice.reducer;
 export const selectors = channelsAdapter.getSelectors((state) => state.channels);
-export { fetchData };
