@@ -21,9 +21,9 @@ const PrivateOutlet = ({ toHomePage } = false) => {
   const auth = useAuth();
 
   if (toHomePage) {
-    return auth.user ? <Outlet /> : <Navigate to="/login" />;
+    return auth.user ? <Outlet /> : <Navigate to={routes.loginPage()} />;
   }
-  return auth.user ? <Navigate to="/" /> : <Outlet />;
+  return auth.user ? <Navigate to={routes.homePage()} /> : <Outlet />;
 };
 
 const App = () => (
